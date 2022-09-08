@@ -1,0 +1,10 @@
+<%= form_with model:[ @article, 
+    @article.comments.build ] do |form| %>
+    <div>
+        <%= form.text_area :body %><br>
+    </div>
+  
+    <div >
+      <%= form.submit "Create Comment", class: 'btn btn-outline-primary' %>
+    </div>
+<% end %>

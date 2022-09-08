@@ -1,0 +1,12 @@
+<%= form_with model:[ @user, 
+    @user.articles.build ] do |form| %>
+    <div>
+        <h6><%= @user.email %></h6><br>
+        <%= form.text_area :body %><br>
+    </div>
+  
+    <div>
+      <p><%= form.submit "Create Article", class: "btn btn-outline-primary" %></p>
+    </div>
+<% end %>
+  

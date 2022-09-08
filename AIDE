@@ -1,0 +1,45 @@
+
+Run server
+bin/rails server
+
+
+
+Creer un Controller 
+(creer un controller cree aussi une vue)
+
+bin/rails generate controller Articles index --skip-routes
+=> Articles => nom du controller 
+=> index => nom de la function 
+
+Creer un model 
+bin/rails generate model Article title:string body:text
+=> Article => nom du model -> toujours au singulier
+
+bin/rails generate model Comment commenter:string body:text article:references
+=> references = id -> ca cree la relation avec le model ARticle
+
+Run la migration 
+bin/rails db:migrate
+
+
+Lancer la console 
+bin/rails console
+
+voir toutes les routes 
+bin/rails routes
+
+
+voir toutes les tables en BDD SQLite
+bin/rails console
+ActiveRecord::Base.connection.tables
+
+
+changer le model / refaire une migration 
+rails db:rollback
+rails db:migrate
+rails db:migrate:redo
+
+
+
+
+

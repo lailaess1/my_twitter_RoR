@@ -1,0 +1,9 @@
+<h1>Direct Message with <%= link_to @user.email, @user %></h1>
+<div>
+    <div>
+        <%= render @messages %>
+    </div>
+    <div>
+        <%= render 'messages/form' %>
+    </div>
+</div>

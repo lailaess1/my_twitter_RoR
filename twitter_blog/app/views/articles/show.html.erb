@@ -1,0 +1,45 @@
+<article style="margin-bottom: 30px; margin-top: 70px; " >
+    <table  class="table table-striped">
+        <tr>
+            <th><%= link_to @article.user.email, @article.user %></th>
+        </tr>
+        <tr>
+            <td><%= @article.updated_at %></td>
+        </tr>
+        <tr>
+            <td><b><%= @article.body %></b></td>
+        </tr>
+    </table>
+    <div class="row">
+        <div class="col-2">
+            <p><%= @article.likes.count %><%= (@article.likes.count) < 2 ? ' Like' : ' Likes' %></p>
+            <% pre_like = @article.likes.find { |like| like.user_id == session[:user_id] } %>
+            <% if pre_like %>
+                <%= button_to 'Unlike', article_like_path(@article, pre_like), method: :delete, class: "btn btn-outline-warning" %>
+            <% else %>
+                <%= button_to 'Like', article_likes_path(@article), method: :post, class: "btn btn-outline-success" %>
+            <% end %>
+        </div>
+        <% if @article.user.id != session[:user_id] %>
+        <div class="col-2" >
+            <p><%= @article.retweets.count %><%= (@article.retweets.count) < 2 ? ' Retweet' : ' Retweets' %></p>
+            <% pre_rt = @article.retweets.find { |retweet| retweet.user_id == session[:user_id] } %>
+            <% is_button_disabled = pre_rt ? 'btn btn-outline-warning' : 'btn btn-outline-info' %>
+            <% if pre_rt %>
+                <%= button_to 'Cancel retweet', article_retweet_path(@article, pre_rt), method: :delete, class: is_button_disabled %>
+            <% else %>
+                <%= button_to 'Retweet', article_retweets_path(@article), method: :post, class: is_button_disabled %>
+            <% end %>
+        </div>
+        <% end %>
+    </div>
+</article>
+
+<h2 style="margin-bottom:20px;" >Comments</h2>
+<%= render @article.comments.order(updated_at: :desc) %>
+
+
+<div>
+    <h2>Add a comment:</h2>
+    <%= render 'comments/form' %>
+</div>

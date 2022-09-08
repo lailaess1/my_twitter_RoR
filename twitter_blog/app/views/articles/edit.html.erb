@@ -1,0 +1,14 @@
+<h1>Edit Article</h1>
+
+<%# <%= render "form", article: @article, user: @user %> %>
+
+<%= form_with model: @article do |form| %>
+    <div>
+        <%= form.text_area :body %><br>
+    </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+<% end %>
+  

@@ -1,0 +1,14 @@
+<div>
+    <h1>All users you send messages to</h1>
+    <ul>
+        <% currentUser = User.find(session[:user_id]) %>
+        <% @array_uniq_all_email.uniq.each do |liste_msg|  %>
+            <% if liste_msg != currentUser.email %>
+                    <%# <% receiver_user_id = User.find(liste_msg.receiver) %> 
+                    <li><%= link_to liste_msg, user_messages_path(User.find_by(email: liste_msg).id) %></li>
+            <% end %>
+        <% end %>
+    </ul>
+</div>
+
+

@@ -1,0 +1,14 @@
+<%= form_with model:[ @user, 
+    @user.messages.build ] do |form| %>
+    <div class="row">
+        <div>
+            <%# <h6><%= @user.email %></h6><br> 
+            <%= form.text_area(:body, cols: 30, rows: 2 )%><%= form.submit "Send Message", class: "btn btn-outline-primary", style: "position:relative; bottom:20px;" %>
+        </div>
+    
+        <div>
+            
+        </div>
+    </div>
+<% end %>
+  

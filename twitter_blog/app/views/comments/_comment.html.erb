@@ -1,0 +1,18 @@
+<div>
+    <article>
+        <p><strong>Comments from : </strong>
+        <%= comment.user.email %><span style="margin-left: 20px;"><%= comment.updated_at%></span></p>
+        <p style="position:relative; bottom:15px; " ><%= comment.body%></p>
+
+        <div style="margin-bottom:30px;position:relative; bottom:25px;">
+            <% if session[:user_id] == comment.user.id %>
+                <%= link_to 'Destroy', [comment.article, comment],
+                    method: :delete,
+                    data: { confirm: "Are you sure ? "} %>
+
+                <%= link_to 'Edit', edit_comment_path(comment) %>
+            <% end %>
+        </div>
+    </article>
+    
+</div>

@@ -1,0 +1,12 @@
+<h1>ABOUT ME</h1>
+<% if @user %>
+    Your email address :  <%= @user.email %>
+
+    <div>
+        <%= link_to "New Tweet", new_about_article_path,class: "btn btn-primary"  %>
+        <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-secondary"  %>
+    </div>
+
+    <h3>Add a tweet</h3>
+    <%= render 'articles/form' %>
+<% end %>
